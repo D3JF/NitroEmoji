@@ -93,12 +93,13 @@ namespace NitroEmoji.Client
                 return LoadEmojiUnlocked(e);
             }
 
-            WebClient w = new WebClient();
-            try {
-                await w.DownloadFileTaskAsync(e.url, FromCache(e));
-            } catch (WebException ex) {
-                HandleError(ex, "Emoji download");
-                return null;
+            using (WebClient w = new WebClient()) {
+                try {
+                    await w.DownloadFileTaskAsync(e.url, FromCache(e));
+                } catch (WebException ex) {
+                    HandleError(ex, "Emoji download");
+                    return null;
+                }
             }
             return LoadEmojiUnlocked(e);
         }

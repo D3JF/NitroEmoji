@@ -40,18 +40,36 @@ namespace NitroEmoji.Resize
         }
 
         public static async Task ResizePng(string path) {
-            var b = new BitmapImage(new Uri(path));
-            int max = (int)Math.Max(b.PixelWidth, b.PixelHeight);
-            if (max <= 50) {
-                return;
-            }
-            var factor = 50.0 / max;
-            var t = new TransformedBitmap(b, new ScaleTransform(factor, factor));
-            BitmapEncoder encoder = new PngBitmapEncoder();
-            encoder.Frames.Add(BitmapFrame.Create(t));
 
-            using (var fileStream = new FileStream(path, FileMode.Create)) {
-                encoder.Save(fileStream);
+            try
+            {
+
+                var b = new BitmapImage();
+                using (var fileStream = new FileStream(path, FileMode.Open)) {
+                    b.BeginInit();
+                    b.StreamSource = fileStream;
+                    b.CacheOption = BitmapCacheOption.OnLoad;
+                    b.EndInit();
+                }
+
+                int max = (int)Math.Max(b.PixelWidth, b.PixelHeight);
+                if (max <= 50)
+                {
+                    return;
+                }
+                var factor = 50.0 / max;
+                var t = new TransformedBitmap(b, new ScaleTransform(factor, factor));
+                BitmapEncoder encoder = new PngBitmapEncoder();
+                encoder.Frames.Add(BitmapFrame.Create(t));
+
+                using (var fileStream = new FileStream(path, FileMode.Create))
+                {
+                    encoder.Save(fileStream);
+                }
+
+            } catch (IOException e)
+            {
+                Console.WriteLine("Exception " + e.Message);
             }
         }
 
