@@ -1,4 +1,7 @@
 # NitroEmoji
+
+**This is a fork of https://github.com/Raffy27/NitroEmoji.** It fixes the software so it doesn't crash while resizing emojis. 
+
 <img src="https://i.imgur.com/07PFZqy.png"> NitroEmoji is a small application that allows Discord users without an active Nitro subscription to automatically download and use custom emojis from servers that they are members of. It also supports cloning custom emojis, given the appropriate emoji ID.
 
 ## Features
@@ -39,13 +42,13 @@ Dev environment:
 
 ### Dependencies
 * **FluentWPF** for the Acrylic Window style
-* **LoadingIndicators.WPF** for the preloader
+* **LoadingIndicators.WPF** for the preloader**
 * **Json.NET** for parsing request data
 * **WpfAnimatedGif** for displaying animated emojis
 * **Gifsicle** for resizing animated emojis
 
 ## Releases
-For active releases and pre-compiled binaries, see <a href="https://github.com/Raffy27/NitroEmoji/releases" target="_blank">Releases</a>.
+For active releases and pre-compiled binaries, see <a href="https://github.com/D3JF/NitroEmoji/releases" target="_blank">Releases</a>.
 
 ## License
-This project is licensed under the MIT License -  see the <a href="https://github.com/Raffy27/NitroEmoji/blob/master/LICENSE" target="_blank">LICENSE</a> file for details. For the dependencies, all rights belong to their respective owners. These should be used according to their respective licenses.
+This project is licensed under the MIT License -  see the <a href="https://github.com/D3JF/NitroEmoji/blob/master/LICENSE" target="_blank">LICENSE</a> file for details. For the dependencies, all rights belong to their respective owners. These should be used according to their respective licenses.
